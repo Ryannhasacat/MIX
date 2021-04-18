@@ -1,0 +1,62 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/mix?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#      type: com.zaxxer.hikari.HikariDataSource
+      minimum-idle: 10
+      maximum-pool-size: 20
+      idle-timeout: 500000
+      max-lifetime: 540000
+      connection-timeout: 60000
+      connection-test-query: SELECT 1
+      data-source-properties:
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        cachePrepStmts: true
+        useServerPrepStmts: true
+#  jackson:
+#    # 日期格式化
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    # 序列化相关
+#    serialization:
+#      # 格式化输出
+#      indent_output: true
+#      # 忽略无法转换的对象
+#      fail_on_empty_beans: true
+#    # 反序列化相关
+#    deserialization:
+#      # 解析json时，遇到不存在的属性就忽略
+#      fail_on_unknown_properties: false
+#    # 设置空如何序列化
+#    defaultPropertyInclusion: NON_EMPTY
+#    parser:
+#      # 允许特殊和转义符
+#      allow_unquoted_control_chars: true
+#      # 允许单引号
+#      allow_single_quotes: true
+
+# ==================================================
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
+ # ==================================================
+logging:
+  level:
+    com.mix: trace
+server:
+  port: 8081
+  servlet:
+    context-path: /

@@ -1,6 +1,5 @@
 package com.mix.http;
 
-import com.mix.exception.HttpClientNullException;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;

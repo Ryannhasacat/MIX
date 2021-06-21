@@ -3,6 +3,10 @@ package com.mix.micro.sp.factory.support;
 import com.mix.micro.sp.BeansException;
 import com.mix.micro.sp.factory.factory.BeanDefinition;
 
+/**
+ * TODO
+ * @author Ryan Z
+ */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory{
 
     @Override

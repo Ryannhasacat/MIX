@@ -13,8 +13,12 @@ import com.mix.micro.sp.factory.factory.BeanDefinition;
  */
 public interface BeanFactory {
 
+    /***
+     *  根据name获取Bean
+     * @param name
+     * @return Object
+     * @throws BeansException
+     */
     Object getBean(String name) throws BeansException;
-
-    void registerBeanDefinition(String name,BeanDefinition beanDefinition);
 
 }

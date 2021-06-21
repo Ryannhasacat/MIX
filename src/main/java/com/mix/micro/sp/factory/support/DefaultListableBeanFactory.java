@@ -6,6 +6,10 @@ import com.mix.micro.sp.factory.factory.BeanDefinition;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ *
+ * @author Ryan Z
+ */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
 
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
@@ -18,7 +22,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     @Override
     BeanDefinition getBeanDefinition(String beanName) throws BeansException {
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
-        if (beanDefinition == null)  throw new BeansException("No bean named '" + beanName + "' is defined");
+        if (beanDefinition == null) {
+            throw new BeansException("No bean named '" + beanName + "' is defined");
+        }
         return beanDefinition;
     }
 }

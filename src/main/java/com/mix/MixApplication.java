@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAsync
+@MapperScan({"com.mix.chain.mapper"})
 public class MixApplication {
 
     public static void main(String[] args) {

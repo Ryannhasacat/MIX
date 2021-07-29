@@ -12,15 +12,29 @@ import com.mix.micro.sp.factory.factory.BeanDefinition;
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
 
 
+    /**
+     * 获取Bean 容器不存在则通过BeanDefinition构建实例化
+     *  模板方法模式
+     * @param name
+     * @param args
+     * @return
+     * @throws BeansException
+     */
     @Override
-    public Object getBean(String name) throws BeansException {
+    public Object getBean(String name,Object[] args) throws BeansException {
         Object bean = getSingleton(name);
         if (bean != null){
             return bean;
         }
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
-        return createBean(name,beanDefinition);
+        return createBean(name,beanDefinition,args);
+    }
+
+
+    @Override
+    public Object getBean(String name) throws BeansException {
+        return getBean(name,null);
     }
 
 //    @Override
@@ -43,5 +57,5 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      * @return
      * @throws BeansException
      */
-    abstract Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException;
+    abstract Object createBean(String beanName, BeanDefinition beanDefinition,Object[] args) throws BeansException;
 }

@@ -49,6 +49,134 @@ public class LambdaDemo {
     Dog dog = new Dog();
 
 
+    public void testUtils(){
+        LambdaUtil.isTrue(true).throwMessage("execution wrong!");
+
+
+        LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                () ->{
+                    System.out.println("I'll do it cuz it is true!");
+                },
+                ()->{
+                    System.out.println("Son of a Bitch! u r false !");
+                });
+
+        LambdaUtil.isBlankOrNoBlank("Exist").presentOrElseHandle(
+                System.out::println,
+                ()->{
+                    System.out.println("i do nothing!");
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                () ->{
+                    LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                            () ->{
+                                LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                                        () ->{
+                                            System.out.println("I'll do it cuz it is true!");
+                                        },
+                                        ()->{
+                                            System.out.println("Son of a Bitch! u r false !");
+                                        });
+                            },
+                            ()->{
+                                LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                                        () ->{
+                                            System.out.println("I'll do it cuz it is true!");
+                                        },
+                                        ()->{
+                                            System.out.println("Son of a Bitch! u r false !");
+                                        });
+                            });
+                },
+                ()->{
+                    LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                            () ->{
+                                LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                                        () ->{
+                                            System.out.println("I'll do it cuz it is true!");
+                                        },
+                                        ()->{
+                                            System.out.println("Son of a Bitch! u r false !");
+                                        });
+                            },
+                            ()->{
+                                LambdaUtil.isTureOrFalse(true).trueOrFalseHandler(
+                                        () ->{
+                                            System.out.println("I'll do it cuz it is true!");
+                                        },
+                                        ()->{
+                                            System.out.println("Son of a Bitch! u r false !");
+                                        });
+                            });
+                });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

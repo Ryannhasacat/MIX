@@ -14,9 +14,18 @@
     <name>mix</name>
     <description>private java fundamental point review</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+        <!-- in your <properties> block -->
+        <pulsar.version>2.8.1</pulsar.version>
     </properties>
     <dependencies>
+        <!-- in your <dependencies> block -->
+        <dependency>
+            <groupId>org.apache.pulsar</groupId>
+            <artifactId>pulsar-client</artifactId>
+            <version>${pulsar.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -151,6 +160,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
         </plugins>

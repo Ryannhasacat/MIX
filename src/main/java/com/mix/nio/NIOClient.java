@@ -18,7 +18,7 @@ public class NIOClient {
                 System.out.println("连接服务器需要时间，期间可以做其他事情...");
             }
         }
-        String msg = "hello java技术爱好者！";
+        String msg = "hello ryan！";
         ByteBuffer byteBuffer = ByteBuffer.wrap(msg.getBytes());
         //把byteBuffer数据写入到通道中
         socketChannel.write(byteBuffer);

@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.mix.mq.configuration.MQClientAutoConfiguration
+com.mix.mq.configuration.MQClientAutoConfiguration=\
+com.mix.mq.PulsarMessageClient

@@ -13,7 +13,7 @@ public class BufferDemo {
 
     public void demo(){
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        String msg = "java技术爱好者";
+        String msg = "mmmmmssssssggggggg";
         //包装一个byte[]数组获得一个Buffer，实际类型是HeapByteBuffer
         ByteBuffer byteBuffer2 = ByteBuffer.wrap(msg.getBytes());
         //创建堆外内存块DirectByteBuffer

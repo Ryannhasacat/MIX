@@ -1,11 +1,11 @@
 package com.mix.mq.test;
 
-import com.mix.mq.MessageProducer;
+import com.mix.mq.PulsarMessageMulticaster;
 
 public class Send {
 
     public static void main(String[] args) {
-        MessageProducer<String> producer = new MessageProducer<>();
+        PulsarMessageMulticaster<String> producer = new PulsarMessageMulticaster<>();
         producer.send("mq-prod","test msg",String.class);
     }
 }

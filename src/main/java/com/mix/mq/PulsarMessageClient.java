@@ -3,6 +3,7 @@ package com.mix.mq;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
@@ -16,6 +17,7 @@ public class PulsarMessageClient implements MessageQueueClientGenerate<PulsarCli
     private static String[] serverUrls;
 
     @Override
+    @Bean
     public PulsarClient generateClient() {
         try {
             return PulsarClient.builder()

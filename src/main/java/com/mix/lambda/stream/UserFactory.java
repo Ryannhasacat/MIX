@@ -30,7 +30,7 @@ public class UserFactory {
         );
         // 通过部门和主管获得权限
         // department, supervisor -> permission
-        Object permissionsLazy = departmentLazy.flatMap(department ->
+        Lazy<Set<String>> permissionsLazy = departmentLazy.flatMap(department ->
                 supervisorLazy.map(
                         supervisor -> permissionService.getPermissions(department, supervisor)
                 )
@@ -40,7 +40,7 @@ public class UserFactory {
         user.setUid(uid);
         user.setDepartment(departmentLazy);
         user.setSupervisor(supervisorLazy);
-        user.setPermissions((Lazy<Set<String>>) permissionsLazy);
+        user.setPermissions(permissionsLazy);
         return user;
     }
 }

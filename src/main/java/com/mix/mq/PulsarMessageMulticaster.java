@@ -1,16 +1,17 @@
 package com.mix.mq;
 
-import com.mix.mq.listener.MarsMessageListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pulsar.client.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Resource;
+import java.nio.ByteBuffer;
+
 
 @Slf4j
 public class PulsarMessageMulticaster<T> {
 
-    @Resource
-    private MessageQueueClientGenerate<PulsarClient> mqclient;
+    @Autowired
+    private PulsarClient client;
 
     /**
      * receive String message via Pulsar Queue
@@ -19,15 +20,22 @@ public class PulsarMessageMulticaster<T> {
      * @param listener
      */
     public void receive(String topic, String subscriptionName, MessageListener<T> listener, Class<T> type){
+
+        ConsumerBuilder builder = null;
+
         try {
-            PulsarClient client = mqclient.generateClient();
+
             if (type.getName().equals(String.class.getTypeName())) {
-                ConsumerBuilder<String> stringConsumerBuilder = client.newConsumer(Schema.STRING);
-                stringConsumerBuilder.topic(topic)
-                        .subscriptionName(subscriptionName)
-                        .messageListener((MessageListener<String>) listener)
-                        .subscribe();
+                builder = client.newConsumer(Schema.STRING);
             }
+            if (type.getName().equals(ByteBuffer.class.getTypeName())){
+                builder = client.newConsumer(Schema.BYTEBUFFER);
+            }
+            if (type.getName().equals(byte[].class.getTypeName())){
+                builder = client.newConsumer(Schema.BYTES);
+            }
+            createSubscribe(builder,topic,subscriptionName,listener);
+
         } catch (PulsarClientException e) {
             log.error("build consumer fail!");
         }
@@ -42,7 +50,6 @@ public class PulsarMessageMulticaster<T> {
      */
     public void send(String topic,T message,Class<T> type){
         try {
-            PulsarClient client = mqclient.generateClient();
             if (type.getName().equals(String.class.getTypeName())) {
                 sendString(client,topic,message);
             }
@@ -64,6 +71,13 @@ public class PulsarMessageMulticaster<T> {
                 .create();
         stringProducer.send((String)message);
     }
+
+    public void createSubscribe(ConsumerBuilder builder,String topic, String subscriptionName, MessageListener listener) throws PulsarClientException {
+        builder.topic(topic).subscriptionName(subscriptionName)
+                .messageListener(listener)
+                .subscribe();
+    }
+
 
 
 }

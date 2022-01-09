@@ -17,6 +17,11 @@ spring:
         prepStmtCacheSqlLimit: 2048
         cachePrepStmts: true
         useServerPrepStmts: true
+    rabbitmq:
+      host: 1.1.1.1 #ip
+      port: 5672      #端口
+      username: user #账号
+      password: user #密码
 #  jackson:
 #    # 日期格式化
 #    date-format: yyyy-MM-dd HH:mm:ss
@@ -56,4 +61,6 @@ mybatis-plus:
 logging:
   level:
     com.mix: trace
+
+
 

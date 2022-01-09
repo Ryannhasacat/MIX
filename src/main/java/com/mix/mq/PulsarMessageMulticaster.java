@@ -72,7 +72,8 @@ public class PulsarMessageMulticaster<T> {
         stringProducer.send((String)message);
     }
 
-    public void createSubscribe(ConsumerBuilder builder,String topic, String subscriptionName, MessageListener listener) throws PulsarClientException {
+    public void createSubscribe(ConsumerBuilder builder,String topic,
+                                String subscriptionName, MessageListener listener) throws PulsarClientException {
         builder.topic(topic).subscriptionName(subscriptionName)
                 .messageListener(listener)
                 .subscribe();

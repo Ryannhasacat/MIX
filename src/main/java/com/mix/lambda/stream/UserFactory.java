@@ -25,9 +25,7 @@ public class UserFactory {
         Lazy<String> departmentLazy = Lazy.of(() -> departmentService.getDepartment(uid));
         // 通过部门获得主管
         // department -> supervisor
-        Lazy<Long> supervisorLazy = departmentLazy.map(
-                department -> SupervisorService.getSupervisor(department)
-        );
+        Lazy<Long> supervisorLazy = departmentLazy.map(SupervisorService::getSupervisor);
         // 通过部门和主管获得权限
         // department, supervisor -> permission
         Lazy<Set<String>> permissionsLazy = departmentLazy.flatMap(department ->

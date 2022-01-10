@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "pulsar.server.urls",
+      "type": "java.lang.String[]",
+      "description": "for loading pulsar url."
+  }
+] }

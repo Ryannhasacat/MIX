@@ -6,6 +6,7 @@ import com.mix.aop.EatMotionsImpl;
 import com.mix.chain.pojo.Cat;
 import com.mix.chain.pojo.Flur;
 import com.mix.listener.CustomApply;
+import com.mix.mq.test.AMQPDemo;
 import com.mix.strategy.StartStrategy;
 import com.mix.strategy.StrategyContext;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +29,9 @@ class MixApplicationTests {
 
     @Autowired
     CustomApply customApply;
+
+    @Autowired
+    AMQPDemo amqpDemo;
 
     @BeforeEach
     public void contextLoads() {
@@ -77,6 +81,11 @@ class MixApplicationTests {
         }
 
 //        map.put()
+    }
+
+    @Test
+    void mqTest(){
+        amqpDemo.send();
     }
 
 }

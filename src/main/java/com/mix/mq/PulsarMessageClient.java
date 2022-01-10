@@ -3,6 +3,7 @@ package com.mix.mq;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +14,8 @@ import java.util.Optional;
 @Configuration
 public class PulsarMessageClient implements MessageQueueClientGenerate<PulsarClient>{
 
-    @Value("${pulsar.server.serverUrls}")
-    private static String[] serverUrls;
+    @Value("${pulsar.server.urls}")
+    private String[] urls;
 
     @Override
     @Bean
@@ -31,8 +32,8 @@ public class PulsarMessageClient implements MessageQueueClientGenerate<PulsarCli
 
     public String servers(){
         StringBuilder servers = new StringBuilder();
-        if (Optional.ofNullable(serverUrls).isPresent() && serverUrls.length > 0) {
-            Iterator<String> iterator = Arrays.stream(serverUrls).iterator();
+        if (Optional.ofNullable(urls).isPresent() && urls.length > 0) {
+            Iterator<String> iterator = Arrays.stream(urls).iterator();
             servers.append(iterator.next());
             if (iterator.hasNext()) {
                 servers.append(",");

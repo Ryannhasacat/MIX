@@ -2,16 +2,20 @@ package com.mix;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Charsets;
 import com.mix.aop.EatMotionsImpl;
 import com.mix.chain.pojo.Cat;
 import com.mix.chain.pojo.Flur;
 import com.mix.listener.CustomApply;
 import com.mix.mq.test.AMQPDemo;
+import com.mix.mq.test.ReceiverDemo;
 import com.mix.strategy.StartStrategy;
 import com.mix.strategy.StrategyContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
@@ -20,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootTest
+@EnableRabbit
 class MixApplicationTests {
 
     @Autowired
@@ -32,6 +37,10 @@ class MixApplicationTests {
 
     @Autowired
     AMQPDemo amqpDemo;
+
+//    @Autowired
+//    ReceiverDemo receiverDemo;
+
 
     @BeforeEach
     public void contextLoads() {

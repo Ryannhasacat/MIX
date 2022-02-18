@@ -9,4 +9,5 @@ server:
 
 pulsar:
   server:
-    serverUrls: pulsar://34.92.132.97:6650
+    urls:
+      - pulsar://34.92.132.97:6650

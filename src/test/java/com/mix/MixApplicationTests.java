@@ -97,4 +97,16 @@ class MixApplicationTests {
         amqpDemo.send();
     }
 
+
+
+    @Test
+    void algo(){
+        int cursorVal = 0;
+        int rateVal = 50;
+        for(int i = cursorVal +1;i <= (rateVal+cursorVal);i++ ){
+            System.out.println(i+";  cursorVal = "+cursorVal+" ; rateVal = "+rateVal);
+        }
+
+    }
+
 }

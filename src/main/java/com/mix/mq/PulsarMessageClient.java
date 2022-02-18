@@ -1,8 +1,8 @@
 package com.mix.mq;
 
+import lombok.Data;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +12,10 @@ import java.util.Iterator;
 import java.util.Optional;
 
 @Configuration
+@ConfigurationProperties(prefix = "pulsar.server")
+@Data
 public class PulsarMessageClient implements MessageQueueClientGenerate<PulsarClient>{
 
-    @Value("${pulsar.server.urls}")
     private String[] urls;
 
     @Override
